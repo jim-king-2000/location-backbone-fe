@@ -1,0 +1,24 @@
+{
+  "name": "location-backbone-fe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jim-king-2000/location-backbone-fe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jim-king-2000/location-backbone-fe/issues"
+  },
+  "homepage": "https://github.com/jim-king-2000/location-backbone-fe#readme",
+  "peerDependencies": {
+    "grommet": "^2.7.1",
+    "mobx-react": "^6.1.1"
+  }
+}
