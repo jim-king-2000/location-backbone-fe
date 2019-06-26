@@ -1,7 +1,6 @@
 import { Box, CheckBox } from 'grommet';
-import { observer } from 'mobx-react';
 
-export const VehicleSelector = observer(({ vehicles, onChange, ...props }) => (
+export const VehicleSelector = ({ vehicles, onChange, ...props }) => (
   <Box {...props}>
     {vehicles.map(v =>
       <CheckBox
@@ -10,4 +9,4 @@ export const VehicleSelector = observer(({ vehicles, onChange, ...props }) => (
         checked={!!v.enabled}
         onChange={e => onChange(v, e.target.checked)} />)}
   </Box>
-));
+);

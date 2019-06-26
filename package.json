@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/jim-king-2000/location-backbone-fe#readme",
   "peerDependencies": {
-    "grommet": "^2.7.1",
-    "mobx-react": "^6.1.1"
+    "grommet": "^2.7.1"
   }
 }
