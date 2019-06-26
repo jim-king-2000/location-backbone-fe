@@ -8,6 +8,6 @@ export const VehicleSelector = observer(({ vehicles, onChange, ...props }) => (
         key={v.thingId}
         label={v.thingName}
         checked={!!v.enabled}
-        onChange={onChange(v, e.target.checked)} />)}
+        onChange={e => onChange(v, e.target.checked)} />)}
   </Box>
 ));
