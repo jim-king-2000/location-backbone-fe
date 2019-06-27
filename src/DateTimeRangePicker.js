@@ -3,8 +3,8 @@ import { Box } from 'grommet';
 import { DateTimePicker } from './DateTimePicker';
 
 export const DateTimeRangePicker = ({
-  startTime = { date: new Date().toLocaleDateString()(), time: '00:00' },
-  endTime = { date: new Date().toLocaleDateString()(), time: '00:00' },
+  startTime = { date: new Date().toLocaleDateString(), time: '00:00' },
+  endTime = { date: new Date().toLocaleDateString(), time: '00:00' },
   disabled, onChangeStartTime, onChangeEndTime }) => (
   <Box direction='row' justify='center' align='center'>
     <DateTimePicker
