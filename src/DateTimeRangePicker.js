@@ -7,14 +7,14 @@ export const DateTimeRangePicker = ({
   onChangeStartTime, onChangeEndTime }) => (
   <Box direction='row' justify='center' align='center'>
     <DateTimePicker
-      date={startTime.date}
-      time={startTime.time}
+      date={startTime && startTime.date}
+      time={startTime && startTime.time}
       disabled={disabled}
       onChange={onChangeStartTime} />
     {'至'}
     <DateTimePicker
-      date={endTime.date}
-      time={endTime.time}
+      date={endTime && endTime.date}
+      time={endTime && endTime.time}
       disabled={disabled}
       onChange={onChangeEndTime} />
   </Box>
