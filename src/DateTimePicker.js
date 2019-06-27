@@ -69,13 +69,10 @@ class DropContent extends Component {
 };
 
 export class DateTimePicker extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      date: this.props.date,
-      time: this.props.time
-    };
-}
+  state = {
+    date: this.props.date || moment().format('YYYY-MM-DD'),
+    time: this.props.time || '00:00'
+  };
 
   onClose = (date, time) => {
     this.setState({ date, time, open: false });
