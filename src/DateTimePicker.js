@@ -4,10 +4,7 @@ import { Box, Button, Keyboard, Calendar, MaskedInput,
   DropButton } from 'grommet';
 
 class DropContent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { date: this.props.date, time: this.props.time };
-  }
+  state = this.props;
   
   setDate = date => this.setState({ date: moment(date).format('YYYY-MM-DD') });
   setTime = time => this.setState({ time });
@@ -80,7 +77,7 @@ export class DateTimePicker extends Component {
   };
 
   render() {
-    const { date, open, time } = this.state;
+    const { open, date, time } = this.state;
     return (
       <DropButton
         margin='xsmall'
