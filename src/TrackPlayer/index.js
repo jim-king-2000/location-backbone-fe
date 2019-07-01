@@ -63,7 +63,7 @@ export class TrackPlayer extends Component {
       currentTimestamp } = this.props.timeline;
     const enabled = startTimestamp < endTimestamp;
     return (
-      <Box>
+      <Box flex={false}>
         <Box align='center' pad='xsmall'>
           <RangeInput
             min={startTimestamp}
