@@ -4,7 +4,7 @@ import { Box, Button, Keyboard, Calendar, MaskedInput,
   DropButton } from 'grommet';
 
 class DropContent extends Component {
-  state = this.props;
+  state = { ...this.props };
   
   setDate = date => this.setState({ date: moment(date).format('YYYY-MM-DD') });
   setTime = time => this.setState({ time });
