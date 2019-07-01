@@ -64,7 +64,7 @@ export class TrackPlayer extends Component {
     const enabled = startTimestamp < endTimestamp;
     return (
       <Box flex={false}>
-        <Box align='center' pad='xsmall'>
+        <Box align='center' pad='xsmall' flex={false}>
           <RangeInput
             min={startTimestamp}
             max={endTimestamp}
