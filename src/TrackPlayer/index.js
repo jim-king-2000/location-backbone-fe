@@ -72,7 +72,7 @@ export class TrackPlayer extends Component {
             onChange={e =>
               this.props.timeline.currentTimestamp = Number(e.target.value)} />
         </Box>
-        <Box direction='row'>
+        <Box flex={false} direction='row'>
           <ButtonPlayOrPause
             disabled={!enabled}
             isPlay={this.state.isPlay}
