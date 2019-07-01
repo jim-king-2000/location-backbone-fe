@@ -5,7 +5,7 @@ import { DateTimePicker } from './DateTimePicker';
 export const DateTimeRangePicker = ({
   disabled, startTime, endTime,
   onChangeStartTime, onChangeEndTime }) => (
-  <Box direction='row' justify='center' align='center'>
+  <Box direction='row' justify='center' align='center' flex={false}>
     <DateTimePicker
       date={startTime && startTime.date}
       time={startTime && startTime.time}
