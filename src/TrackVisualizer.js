@@ -61,9 +61,11 @@ export const TrackVisualizer = observer(({ timeline, visualization }) => (
   <Box margin='xsmall' gap='xsmall' flex={false}>
     <div style={{ maxHeight: '150px', overflow: 'auto' }}>
       <Box flex={false} margin='xsmall'>
-        {visualization.map(trackVisual => <VisualItem
-          trackVisual={trackVisual}
-          timeline={timeline} />)}
+        {visualization.map((trackVisual, i) =>
+          <VisualItem
+            key={`${visualization.thingId}-${i}`}
+            trackVisual={trackVisual}
+            timeline={timeline} />)}
       </Box>
     </div>
     <ClockRange timeline={timeline} />
