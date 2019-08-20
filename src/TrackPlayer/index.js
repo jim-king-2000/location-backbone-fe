@@ -24,10 +24,10 @@ function normalize(step) {
 
 @observer
 export class TrackPlayer extends Component {
-  state = { isPlay: true, step: 1 };
+  state = { step: 1 };
 
   onPlay = () => {
-    assert.deepEqual(this.state.isPlay, true);
+    assert.deepEqual(this.props.isPlaying, true);
     const timeline = this.props.timeline;
     const { endTimestamp, currentTimestamp } = timeline;
 
@@ -43,15 +43,13 @@ export class TrackPlayer extends Component {
       timeline.currentTimestamp += Steps[this.state.step];
     }, 700);
 
-    this.setState({ isPlay: false });
     this.props.onPlayOrPause && this.props.onPlayOrPause(true);
   }
 
   onPause = () => {
-    assert.deepEqual(this.state.isPlay, false);
+    assert.deepEqual(this.props.isPlaying, false);
     clearInterval(this.timer);
     this.timer = null;
-    this.setState({ isPlay: true });
     this.props.onPlayOrPause && this.props.onPlayOrPause(false);
   }
 
@@ -62,6 +60,7 @@ export class TrackPlayer extends Component {
     const { startTimestamp, endTimestamp,
       currentTimestamp } = this.props.timeline;
     const enabled = startTimestamp < endTimestamp;
+    const isPlaying = this.props.isPlaying;
     return (
       <Box flex={false}>
         <Box align='center' pad='xsmall' flex={false}>
@@ -75,7 +74,7 @@ export class TrackPlayer extends Component {
         <Box flex={false} direction='row'>
           <ButtonPlayOrPause
             disabled={!enabled}
-            isPlay={this.state.isPlay}
+            isPlay={isPlaying}
             onPlay={this.onPlay}
             onPause={this.onPause} />
           <Button
