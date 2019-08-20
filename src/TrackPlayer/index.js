@@ -27,7 +27,7 @@ export class TrackPlayer extends Component {
   state = { step: 1 };
 
   onPlay = () => {
-    assert.deepEqual(this.props.isPlaying, true);
+    assert.deepEqual(this.props.isPlaying, false);
     const timeline = this.props.timeline;
     const { endTimestamp, currentTimestamp } = timeline;
 
@@ -47,7 +47,7 @@ export class TrackPlayer extends Component {
   }
 
   onPause = () => {
-    assert.deepEqual(this.props.isPlaying, false);
+    assert.deepEqual(this.props.isPlaying, true);
     clearInterval(this.timer);
     this.timer = null;
     this.props.onPlayOrPause && this.props.onPlayOrPause(false);
