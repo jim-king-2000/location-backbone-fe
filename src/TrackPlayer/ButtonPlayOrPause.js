@@ -1,12 +1,12 @@
 import { Button } from 'grommet';
 import { Pause, Play } from 'grommet-icons';
 
-export default ({ disabled, isPlay, onPlay, onPause }) => (
+export default ({ disabled, isPlaying, onPlay, onPause }) => (
   <Button
     margin='xsmall'
     plain={false}
     disabled={disabled}
-    icon={isPlay ? <Play /> : <Pause />}
-    onClick={isPlay ? onPlay : onPause}
+    icon={isPlaying ? <Pause /> : <Play />}
+    onClick={isPlaying ? onPause : onPlay}
     name='onPlayOrPause' />
 );

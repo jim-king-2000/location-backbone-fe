@@ -74,7 +74,7 @@ export class TrackPlayer extends Component {
         <Box flex={false} direction='row'>
           <ButtonPlayOrPause
             disabled={!enabled}
-            isPlay={isPlaying}
+            isPlaying={isPlaying}
             onPlay={this.onPlay}
             onPause={this.onPause} />
           <Button
