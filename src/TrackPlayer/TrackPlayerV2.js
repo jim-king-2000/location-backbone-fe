@@ -28,13 +28,12 @@ export class TrackPlayerV2 extends Component {
     assert(!this.props.playerStatus.isPlaying);
     const timeline = this.props.timeline;
     const { endTimestamp, currentTimestamp } = timeline;
-    const timer = this.props.playerStatus.timer;
 
-    if (timer) {
+    if (this.props.playerStatus.timer) {
       assert.fail('Timer should be undefined.');
       this.onPause();
     }
-    timer = setInterval(() => {
+    this.props.playerStatus.timer = setInterval(() => {
       if (currentTimestamp >= endTimestamp) {
         this.onPause();
         return;
@@ -47,8 +46,7 @@ export class TrackPlayerV2 extends Component {
 
   onPause = () => {
     assert(this.props.playerStatus.isPlaying);
-    const timer = this.props.playerStatus.timer;
-    clearInterval(timer);
+    clearInterval(this.props.playerStatus.timer);
     this.props.playerStatus.timer = undefined;
     this.props.playerStatus.isPlaying = false;
   }
