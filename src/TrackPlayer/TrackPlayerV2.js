@@ -25,7 +25,7 @@ function normalize(step) {
 @observer
 export class TrackPlayerV2 extends Component {
   onPlay = () => {
-    assert.deepEqual(this.props.playerStatus.isPlaying, false);
+    assert(!this.props.playerStatus.isPlaying);
     const timeline = this.props.timeline;
     const { endTimestamp, currentTimestamp } = timeline;
     const timer = this.props.playerStatus.timer;
@@ -46,7 +46,7 @@ export class TrackPlayerV2 extends Component {
   }
 
   onPause = () => {
-    assert.deepEqual(this.props.playerStatus.isPlaying, true);
+    assert(this.props.playerStatus.isPlaying);
     const timer = this.props.playerStatus.timer;
     clearInterval(timer);
     this.props.playerStatus.timer = undefined;
