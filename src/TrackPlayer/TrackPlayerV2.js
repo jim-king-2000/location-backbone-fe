@@ -31,7 +31,7 @@ export class TrackPlayerV2 extends Component {
     const timer = this.props.playerStatus.timer;
 
     if (timer) {
-      assert.fail('this.timer should be null.');
+      assert.fail('Timer should be undefined.');
       this.onPause();
     }
     timer = setInterval(() => {
@@ -47,8 +47,9 @@ export class TrackPlayerV2 extends Component {
 
   onPause = () => {
     assert.deepEqual(this.props.playerStatus.isPlaying, true);
-    clearInterval(this.timer);
-    this.timer = null;
+    const timer = this.props.playerStatus.timer;
+    clearInterval(timer);
+    this.props.playerStatus.timer = undefined;
     this.props.playerStatus.isPlaying = false;
   }
 
