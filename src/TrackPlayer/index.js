@@ -24,43 +24,44 @@ function normalize(step) {
 
 @observer
 export class TrackPlayer extends Component {
-  state = { step: 1 };
-
   onPlay = () => {
-    assert.deepEqual(this.props.isPlaying, false);
+    assert(!this.props.playerStatus.isPlaying);
     const timeline = this.props.timeline;
     const { endTimestamp, currentTimestamp } = timeline;
 
-    if (this.timer) {
-      assert.fail('this.timer should be null.');
+    if (this.props.playerStatus.timer) {
+      assert.fail('Timer should be undefined.');
       this.onPause();
     }
-    this.timer = setInterval(() => {
+    this.props.playerStatus.timer = setInterval(() => {
       if (currentTimestamp >= endTimestamp) {
         this.onPause();
         return;
       }
-      timeline.currentTimestamp += Steps[this.state.step];
+      timeline.currentTimestamp += Steps[this.props.playerStatus.step || 1];
     }, 700);
 
-    this.props.onPlayOrPause && this.props.onPlayOrPause(true);
+    this.props.playerStatus.isPlaying = true;
   }
 
   onPause = () => {
-    assert.deepEqual(this.props.isPlaying, true);
-    clearInterval(this.timer);
-    this.timer = null;
-    this.props.onPlayOrPause && this.props.onPlayOrPause(false);
+    assert(this.props.playerStatus.isPlaying);
+    clearInterval(this.props.playerStatus.timer);
+    this.props.playerStatus.timer = undefined;
+    this.props.playerStatus.isPlaying = false;
   }
 
-  onFast = () => this.setState({ step: normalize(this.state.step + 1) });
-  onSlow = () => this.setState({ step: normalize(this.state.step - 1) });
+  onFast = () => this.props.playerStatus.step =
+    normalize((this.props.playerStatus.step || 1) + 1);
+  onSlow = () => this.props.playerStatus.step =
+    normalize((this.props.playerStatus.step || 1) - 1);
 
   render() {
     const { startTimestamp, endTimestamp,
       currentTimestamp } = this.props.timeline;
     const enabled = startTimestamp < endTimestamp;
-    const isPlaying = this.props.isPlaying;
+    const isPlaying = this.props.playerStatus.isPlaying;
+    const step = this.props.playerStatus.step || 1;
     return (
       <Box flex={false}>
         <Box align='center' pad='xsmall' flex={false}>
@@ -92,7 +93,7 @@ export class TrackPlayer extends Component {
           <Box
             margin='xsmall'
             justify='center'>
-            {Steps[this.state.step] / 1000}&times;
+            {Steps[step] / 1000}&times;
           </Box>
         </Box>
       </Box>
