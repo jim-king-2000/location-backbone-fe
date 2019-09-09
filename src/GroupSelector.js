@@ -53,7 +53,7 @@ export class GroupSelector extends Component {
     const vehicleIndex = this.state.vehicleIndex;
     return (
       <Box
-        width={{max: '275px'}}
+        height={{max: '275px'}}
         overflow='auto'>
         <Box pad='xsmall' flex={false}>
           {Array.isArray(groups) && groups.map(group => (
