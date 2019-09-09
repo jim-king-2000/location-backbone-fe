@@ -52,9 +52,7 @@ export class GroupSelector extends Component {
     const groups = this.state.groups;
     const vehicleIndex = this.state.vehicleIndex;
     return (
-      <Box
-        height={{max: '275px'}}
-        overflow='auto'>
+      <Box height={{max: '275px'}} overflow='auto'>
         <Box pad='xsmall' flex={false}>
           {Array.isArray(groups) && groups.map(group => (
             <React.Fragment key={group.id}>
